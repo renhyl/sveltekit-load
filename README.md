@@ -2,8 +2,6 @@
 
 # setup
 
-## Developing
-
 ```bash
 bun i
 
