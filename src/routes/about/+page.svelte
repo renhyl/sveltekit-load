@@ -4,10 +4,6 @@
 
 	let { data } = $props();
 
-	$effect(() => {
-		console.log('data', data);
-	});
-
 	const loadedValue = $derived(page.url.searchParams.get('value'));
 
 	const handleOnClick = async (value) => {
@@ -24,7 +20,9 @@
 		Demonstrates progressive loading, posts will load after 2s while comments will load after 4s
 	</h2>
 
-	url param loaded immedietly from page.url.searchParams.get('value'): {loadedValue}
+	NOTE: inspect browser console for more info on when +layout.ts - load() is triggered, and see
+	terminal console output for when +layout.server.ts - load() is triggered. url param loaded
+	immedietly from page.url.searchParams.get('value'): {loadedValue}
 </div>
 
 <br />
@@ -32,7 +30,6 @@
 {#await data.posts}
 	Loading posts...
 {:then posts}
-	{console.log('posts', posts)}
 	<div>
 		loaded posts:
 		{#each posts as post (post)}
